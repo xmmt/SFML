@@ -45,6 +45,8 @@ set(CODECS_SRC
     ${SRCROOT}/SoundFileReaderMp3.cpp
     ${SRCROOT}/SoundFileReaderOgg.hpp
     ${SRCROOT}/SoundFileReaderOgg.cpp
+    ${SRCROOT}/SoundFileReaderOpus.hpp
+    ${SRCROOT}/SoundFileReaderOpus.cpp
     ${SRCROOT}/SoundFileReaderWav.hpp
     ${SRCROOT}/SoundFileReaderWav.cpp
     ${INCROOT}/SoundFileWriter.hpp
@@ -71,6 +73,7 @@ endif()
 sfml_find_package(OpenAL INCLUDE "OPENAL_INCLUDE_DIR" LINK "OPENAL_LIBRARY")
 sfml_find_package(VORBIS INCLUDE "VORBIS_INCLUDE_DIRS" LINK "VORBIS_LIBRARIES")
 sfml_find_package(FLAC INCLUDE "FLAC_INCLUDE_DIR" LINK "FLAC_LIBRARY")
+sfml_find_package(Opus INCLUDE "OPUS_INCLUDE_DIR" LINK "OPUS_LIBRARY")
 
 # avoids warnings in vorbisfile.h
 target_compile_definitions(VORBIS INTERFACE "OV_EXCLUDE_STATIC_CALLBACKS")
