@@ -233,6 +233,14 @@ if(SFML_OS_WINDOWS)
                 string(REGEX REPLACE "/MD" "/MT" ${flag} "${${flag}}")
             endif()
         endforeach()
+
+        # in some cases /MD is not set and thus not replaced with /MT, as such manual override is required
+        if(NOT (CMAKE_CXX_FLAGS_DEBUG MATCHES "/MT" OR CMAKE_CXX_FLAGS_RELEASE MATCHES "/MT" OR CMAKE_CXX_FLAGS_MINSIZEREL MATCHES "/MT" OR CMAKE_CXX_FLAGS_RELWITHDEBINFO MATCHES "/MT"))
+            set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+            set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
+            set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL} /MT")
+            set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} /MT")
+        endif()
     endif()
 endif()
 
