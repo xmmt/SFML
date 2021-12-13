@@ -138,13 +138,19 @@ public:
 /// sf::Texture texture;
 /// ZipStream stream("resources.zip");
 /// stream.open("images/img.png");
-/// texture.loadFromStream(stream);
+/// if (!texture.loadFromStream(stream))
+/// {
+///     // Handle error...
+/// }
 ///
 /// // musics...
 /// sf::Music music;
 /// ZipStream stream("resources.zip");
 /// stream.open("musics/msc.ogg");
-/// music.openFromStream(stream);
+/// if (!music.openFromStream(stream))
+/// {
+///     // Handle error...
+/// }
 ///
 /// // etc.
 /// \endcode
