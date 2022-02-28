@@ -35,20 +35,30 @@
 
 #include <SFML/System/Win32/WindowsHeader.hpp>
 
+#include <dinput.h>
+#include <mmsystem.h>
+#include <regstr.h>
+#include <tchar.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
-#include <tchar.h>
-#include <regstr.h>
-#include <mmsystem.h>
-#include <dinput.h>
 
 #endif // SFML_SYSTEM_WINDOWS
 
 #include <SFML/System/Err.hpp>
 #include <SFML/System/String.hpp>
+#include <SFML/System/Time.hpp>
+#include <SFML/System/Vector2.hpp>
 
 #include <algorithm>
+#include <cassert>
+#include <cmath>
+#include <cstring>
+#include <filesystem>
 #include <iostream>
+#include <memory>
+#include <mutex>
 #include <string>
+#include <unordered_map>
+#include <vector>
 
 #endif // SFML_PCH_HPP

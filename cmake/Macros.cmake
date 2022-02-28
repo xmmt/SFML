@@ -73,8 +73,26 @@ macro(sfml_add_library module)
     # enable C++17 support
     target_compile_features(${target} PUBLIC cxx_std_17)
 
+    # TODO: WIP hack, this is not a performance improvement...
+    message(STATUS "Enabling precompiled headers for ${target}")
+    target_precompile_headers(${target} PRIVATE "${CMAKE_SOURCE_DIR}/src/SFML/PCH.hpp")
+    set_file_warnings("${CMAKE_BINARY_DIR}/src/SFML/Audio/CMakeFiles/${target}.dir/cmake_pch.hxx.cxx")
+    set_file_warnings("${CMAKE_BINARY_DIR}/src/SFML/Window/CMakeFiles/${target}.dir/cmake_pch.hxx.cxx")
+    set_file_warnings("${CMAKE_BINARY_DIR}/src/SFML/Network/CMakeFiles/${target}.dir/cmake_pch.hxx.cxx")
+    set_file_warnings("${CMAKE_BINARY_DIR}/src/SFML/System/CMakeFiles/${target}.dir/cmake_pch.hxx.cxx")
+    set_file_warnings("${CMAKE_BINARY_DIR}/src/SFML/Graphics/CMakeFiles/${target}.dir/cmake_pch.hxx.cxx")
+    set_file_warnings("${CMAKE_BINARY_DIR}/src/SFML/Main/CMakeFiles/${target}.dir/cmake_pch.hxx.cxx")
+
+    # TODO: ideally this is what we want, but it fails because `SFML_SYSTEM_EXPORTS` is mismatched between PCHs
     # enable precompiled headers
-    # target_precompile_headers(${target} PRIVATE "${CMAKE_SOURCE_DIR}/src/SFML/PCH.hpp")
+    if(target STREQUAL "sfml-system")
+        # message(STATUS "Enabling precompiled headers for ${target}")
+        # target_precompile_headers(sfml-system PRIVATE "${CMAKE_SOURCE_DIR}/src/SFML/PCH.hpp")
+        # set_file_warnings("${CMAKE_BINARY_DIR}/src/SFML/System/CMakeFiles/sfml-system.dir/cmake_pch.hxx.cxx")
+        # set_source_files_properties("${CMAKE_BINARY_DIR}/src/SFML/System/CMakeFiles/sfml-system.dir/cmake_pch.hxx.cxx" PROPERTIES DEFINE_SYMBOL SFML_SYSTEM_EXPORTS)
+    else()
+        # target_precompile_headers(${target} REUSE_FROM sfml-system)
+    endif()
 
     # Add required flags for GCC if coverage reporting is enabled
     if (SFML_ENABLE_COVERAGE AND (SFML_COMPILER_GCC OR SFML_COMPILER_CLANG))
