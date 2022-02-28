@@ -29,7 +29,6 @@
 // Precompiled Headers
 ////////////////////////////////////////////////////////////
 
-/*
 #include <SFML/Config.hpp>
 
 #ifdef SFML_SYSTEM_WINDOWS
@@ -51,6 +50,5 @@
 #include <algorithm>
 #include <iostream>
 #include <string>
-*/
 
 #endif // SFML_PCH_HPP

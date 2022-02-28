@@ -65,8 +65,8 @@ endif()
 sfml_add_library(System
                  SOURCES ${SRC} ${PLATFORM_SRC})
 
-set_file_warnings("${CMAKE_SOURCE_DIR}/src/SFML/PCH.hpp")
 target_precompile_headers(sfml-system PRIVATE "${CMAKE_SOURCE_DIR}/src/SFML/PCH.hpp")
+set_file_warnings("${CMAKE_BINARY_DIR}/src/SFML/System/CMakeFiles/sfml-system.dir/cmake_pch.hxx.cxx")
 
 if(SFML_OS_ANDROID)
     # glad sources
