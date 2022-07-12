@@ -195,6 +195,10 @@ elseif(SFML_OS_MACOSX)
         ${SRCROOT}/OSX/SFViewController.h
         ${SRCROOT}/OSX/SFViewController.mm
         ${SRCROOT}/OSX/VideoModeImpl.cpp
+            ${SRCROOT}/OSX/VulkanImplOSX.hpp
+            ${SRCROOT}/OSX/VulkanImplOSX.cpp
+            ${SRCROOT}/OSX/ObjC-interface.h
+            ${SRCROOT}/OSX/ObjC-interface.m
         ${SRCROOT}/OSX/WindowImplCocoa.hpp
         ${SRCROOT}/OSX/WindowImplCocoa.mm
         ${SRCROOT}/OSX/WindowImplDelegateProtocol.h
@@ -317,7 +321,7 @@ elseif(SFML_OS_WINDOWS)
 elseif(SFML_OS_FREEBSD)
     target_link_libraries(sfml-window PRIVATE usbhid)
 elseif(SFML_OS_MACOSX)
-    target_link_libraries(sfml-window PRIVATE "-framework Foundation" "-framework AppKit" "-framework IOKit" "-framework Carbon")
+    target_link_libraries(sfml-window PRIVATE "-framework Foundation" "-framework AppKit" "-framework IOKit" "-framework Carbon" "-framework QuartzCore")
 elseif(SFML_OS_IOS)
     target_link_libraries(sfml-window PRIVATE "-framework Foundation" "-framework UIKit" "-framework CoreGraphics" "-framework QuartzCore" "-framework CoreMotion")
 elseif(SFML_OS_ANDROID)

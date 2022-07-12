@@ -68,7 +68,8 @@
     #include <SFML/Window/OSX/WindowImplCocoa.hpp>
     using WindowImplType = sf::priv::WindowImplCocoa;
 
-    #define SFML_VULKAN_IMPLEMENTATION_NOT_AVAILABLE
+    #include <SFML/Window/OSX/VulkanImplOSX.hpp>
+    using VulkanImplType = sf::priv::VulkanImplOSX;
 
 #elif defined(SFML_SYSTEM_IOS)
 

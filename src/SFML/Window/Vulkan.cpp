@@ -45,6 +45,11 @@ using VulkanImplType = sf::priv::VulkanImplWin32;
 
     #endif
 
+#elif defined(SFML_SYSTEM_MACOS)
+
+#include <SFML/Window/OSX//VulkanImplOSX.hpp>
+using VulkanImplType = sf::priv::VulkanImplOSX;
+
 #else
 
 #define SFML_VULKAN_IMPLEMENTATION_NOT_AVAILABLE
